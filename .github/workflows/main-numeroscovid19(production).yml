@@ -23,11 +23,10 @@ jobs:
       with:
         node-version: '14.x'
 
-    - name: npm install, build, and test
+    - name: yarn install and build
       run: |
         yarn
-        yarn build --if-present
-        yarn test --if-present
+        yarn build
 
     - name: Run Azure webapp deploy action using publish profile credentials
       uses: azure/webapps-deploy@v2
