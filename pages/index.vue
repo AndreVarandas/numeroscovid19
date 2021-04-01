@@ -1,27 +1,6 @@
 <template>
   <div class="container">
-    <div>
-      <Logo />
-      <h1 class="title">numeroscovid19</h1>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+    <h1 class="title">Hello, world.</h1>
   </div>
 </template>
 
@@ -31,19 +10,9 @@ import Vue from 'vue'
 export default Vue.extend({})
 </script>
 
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
+<style lang="scss" scoped>
 .container {
-@apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+  @apply min-h-screen flex justify-center items-center text-center mx-auto;
 }
 
 .title {
@@ -54,17 +23,5 @@ export default Vue.extend({})
   font-size: 100px;
   color: #35495e;
   letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
 }
 </style>
