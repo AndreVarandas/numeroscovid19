@@ -17,6 +17,6 @@ export default class Layout extends Vue {}
 
 <style lang="scss" scoped>
 .nc-app {
-  background-color: purple;
+  background-color: gray;
 }
 </style>
