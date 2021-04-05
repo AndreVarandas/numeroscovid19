@@ -1,7 +1,7 @@
 <template>
   <div class="nc-app">
-    <the-nav />
-    <Nuxt />
+    <Nuxt class="nc-app__wrapper flex-1 mt-6" />
+    <TheFooter class="nc-app__wrapper" />
   </div>
 </template>
 
@@ -9,14 +9,18 @@
 import { Component, Vue } from 'nuxt-property-decorator'
 
 // Components
-import TheNav from '@/components/header/TheNav.vue'
+import TheFooter from '@/components/footer/TheFooter.vue'
 
-@Component({ components: { TheNav } })
+@Component({ components: { TheFooter } })
 export default class Layout extends Vue {}
 </script>
 
 <style lang="scss" scoped>
 .nc-app {
-  background-color: gray;
+  @apply flex flex-col h-screen;
+
+  &__wrapper {
+    @apply container mx-auto px-6 py-4;
+  }
 }
 </style>
