@@ -1,5 +1,8 @@
 <template>
   <section class="nc-grid-report">
+    <h4 class="nc-grid-report__header">
+      Diferenças face ao relatório anterior
+    </h4>
     <div class="nc-grid-report-row nc-grid-report__row">
       <div class="nc-grid-report-column nc-grid-report__column">
         <span class="nc-grid-report-column__value">{{ vigilancia }}</span>
@@ -59,12 +62,16 @@ export default class GridReport extends Vue {
 
 <style lang="scss" scoped>
 .nc-grid-report {
+  &__header {
+    @apply text-xl text-gray-600 mb-6;
+  }
+
   &__row {
     @apply flex mb-8;
   }
 
   &__column {
-    @apply w-1/4 flex-col flex items-center;
+    @apply w-1/4 flex-col flex lg:w-1/6;
   }
 }
 

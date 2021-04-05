@@ -4,8 +4,8 @@
       <h1 class="text-3xl font-bold text-gray-600 mb-2">
         Números covid-19 Portugal
       </h1>
-      <p class="text-xl text-gray-400 mb-6">Últimos dados disponíveis</p>
-      <div class="flex flex-col sm:flex-row items-center">
+      <h2 class="text-xl text-gray-600 mb-6">Últimos dados disponíveis</h2>
+      <div class="flex flex-col md:flex-row items-center">
         <CardDailyUpdate
           class="sm:w-1/2"
           subtitle="Resumo do relatório"
@@ -14,7 +14,7 @@
           :novos="confirmados"
           :obitos="obitos"
         />
-        <div class="sm:ml-6 w-full mt-12 mb-2 sm:mt-0 h-full">
+        <div class="w-full h-full mt-12 mb-2 md:ml-12 md:mt-0">
           <GridReport
             :vigilancia="update.vigilancia"
             :activos="update.ativos"
@@ -29,8 +29,17 @@
       </div>
     </section>
     <section>
-      <div v-if="nationalRt" class="flex flex-col sm:flex-row">
-        <CardReprodutionUpdate :reproduction="nationalRt" />
+      <div v-if="nationalRt" class="flex flex-col mt-6 md:mt-12 md:flex-row">
+        <CardReproductionUpdate
+          :reproduction="nationalRt"
+          :data="nationalRtData"
+        />
+      </div>
+    </section>
+    <section>
+      <div class="flex flex-col mt-6">
+        <h2 class="text-xl text-gray-600 mb-6">Todos os dados disponíveis:</h2>
+        <GridCompleteReport :data="lastUpdateCleanData" />
       </div>
     </section>
   </div>
@@ -47,11 +56,17 @@ import { IData, IDataUpdate } from '@/interfaces/http/common.interface'
 
 // Components
 import CardDailyUpdate from '~/components/dashboard/card/CardDailyUpdate.vue'
-import CardReprodutionUpdate from '~/components/dashboard/card/CardReprodutionUpdate.vue'
+import CardReproductionUpdate from '~/components/dashboard/card/CardReproductionUpdate.vue'
 import GridReport from '~/components/dashboard/grid/GridReport.vue'
+import GridCompleteReport from '~/components/dashboard/grid/GridCompleteReport.vue'
 
 @Component({
-  components: { CardDailyUpdate, CardReprodutionUpdate, GridReport },
+  components: {
+    CardDailyUpdate,
+    CardReproductionUpdate,
+    GridReport,
+    GridCompleteReport,
+  },
 })
 export default class Home extends Vue {
   last = {} as IData
@@ -61,6 +76,21 @@ export default class Home extends Vue {
   confirmados = 0
   obitos = 0
   nationalRt = '0'
+  nationalRtData = ''
+
+  get lastUpdateCleanData() {
+    const lastUpdateCopy: any = this.last
+    for (const prop in lastUpdateCopy) {
+      if (
+        lastUpdateCopy[prop] === '' ||
+        lastUpdateCopy[prop] === null ||
+        lastUpdateCopy[prop] === null
+      ) {
+        delete lastUpdateCopy[prop]
+      }
+    }
+    return this.last
+  }
 
   /**
    * Special hook for SSR that is called during server-side rendering
@@ -75,7 +105,24 @@ export default class Home extends Vue {
     this.obitos = this.update.obitos
 
     // Carefull here, the national RT is probably updated only on the next days...
-    this.nationalRt = this.last.rtNacional
+
+    if (this.last.rtNacional === '') {
+      await this.fetchLatestRtData(5)
+    } else {
+      this.nationalRt = this.last.rtNacional
+      this.nationalRtData = this.last.data
+    }
+  }
+
+  async fetchLatestRtData(retries: number) {
+    for (let i = 1; i < retries + 1; i++) {
+      const data: IData[] = await $axios.get(`api/v1/data/last/${i}`)
+      if (data[0].rtNacional) {
+        this.nationalRt = data[0].rtNacional
+        this.nationalRtData = data[0].data
+        break
+      }
+    }
   }
 }
 </script>
