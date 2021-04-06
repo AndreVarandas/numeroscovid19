@@ -28,17 +28,22 @@
         </div>
       </div>
     </section>
-    <section>
-      <div v-if="nationalRt" class="flex flex-col mt-6 md:mt-12 md:flex-row">
+
+    <section class="flex flex-col mt-6 md:flex-row md:mt-12">
+      <div v-if="nationalRt" class="flex flex-col md:flex-row">
         <CardReproductionUpdate
           :reproduction="nationalRt"
           :data="nationalRtData"
         />
       </div>
+      <div class="mt-12 md:ml-12 md:mt-0">
+        <GridHighlights :highlights="highlights" />
+      </div>
     </section>
+
     <section>
-      <div class="flex flex-col mt-6">
-        <h2 class="text-xl text-gray-600 mb-6">Todos os dados disponíveis:</h2>
+      <div class="flex flex-col mt-12">
+        <h2 class="text-xl text-gray-600 mb-2">Todos os dados disponíveis</h2>
         <GridCompleteReport :data="lastUpdateCleanData" />
       </div>
     </section>
@@ -46,7 +51,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'nuxt-property-decorator'
+import { Component, Vue, Watch } from 'nuxt-property-decorator'
 
 // Utils
 import { $axios } from '@/utils/api'
@@ -57,15 +62,18 @@ import { IData, IDataUpdate } from '@/interfaces/http/common.interface'
 // Components
 import CardDailyUpdate from '~/components/dashboard/card/CardDailyUpdate.vue'
 import CardReproductionUpdate from '~/components/dashboard/card/CardReproductionUpdate.vue'
-import GridReport from '~/components/dashboard/grid/GridReport.vue'
 import GridCompleteReport from '~/components/dashboard/grid/GridCompleteReport.vue'
+import GridHighlights from '~/components/dashboard/grid/GridHighlights.vue'
+import GridReport from '~/components/dashboard/grid/GridReport.vue'
+import { IGridHighlightsProp } from '~/interfaces/components/grid/IGridHighlights.interface'
 
 @Component({
   components: {
     CardDailyUpdate,
     CardReproductionUpdate,
-    GridReport,
     GridCompleteReport,
+    GridHighlights,
+    GridReport,
   },
 })
 export default class Home extends Vue {
@@ -77,6 +85,7 @@ export default class Home extends Vue {
   obitos = 0
   nationalRt = '0'
   nationalRtData = ''
+  highlights = {} as IGridHighlightsProp
 
   get lastUpdateCleanData() {
     const lastUpdateCopy: any = this.last
@@ -104,13 +113,25 @@ export default class Home extends Vue {
     this.confirmados = this.update.confirmados
     this.obitos = this.update.obitos
 
-    // Carefull here, the national RT is probably updated only on the next days...
+    this.highlights = this.getHighlightsFromUpdate(this.last)
 
+    // Carefull here, the national RT is probably updated only on the next days...
     if (this.last.rtNacional === '') {
       await this.fetchLatestRtData(5)
     } else {
       this.nationalRt = this.last.rtNacional
       this.nationalRtData = this.last.data
+    }
+  }
+
+  getHighlightsFromUpdate(last: IData): IGridHighlightsProp {
+    return {
+      internados: last.internados,
+      internadosUci: last.internadosUci,
+      ativos: last.ativos,
+      recuperados: last.recuperados,
+      obitos: last.obitos,
+      confirmados: last.confirmados,
     }
   }
 
