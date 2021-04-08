@@ -30,13 +30,13 @@
     </section>
 
     <section class="flex flex-col mt-6 md:flex-row md:mt-12">
-      <div v-if="nationalRt" class="flex flex-col md:flex-row">
-        <CardReproductionUpdate
-          :reproduction="nationalRt"
-          :data="nationalRtData"
-        />
-      </div>
-      <div class="mt-12 md:ml-12 md:mt-0">
+      <CardReproductionUpdate
+        class="md:w-1/3"
+        :reproduction="nationalRt"
+        :data="nationalRtData"
+      />
+
+      <div class="mt-12 sm:ml-12 md:mt-0">
         <GridHighlights :highlights="highlights" />
       </div>
     </section>
@@ -64,7 +64,7 @@ import CardDailyUpdate from '~/components/dashboard/card/CardDailyUpdate.vue'
 import CardReproductionUpdate from '~/components/dashboard/card/CardReproductionUpdate.vue'
 import GridCompleteReport from '~/components/dashboard/grid/GridCompleteReport.vue'
 import GridHighlights from '~/components/dashboard/grid/GridHighlights.vue'
-import GridReport from '~/components/dashboard/grid/GridReport.vue'
+import GridReport from '~/components/dashboard/grid/GridDailyReport.vue'
 import { IGridHighlightsProp } from '~/interfaces/components/grid/IGridHighlights.interface'
 
 @Component({
@@ -79,13 +79,13 @@ import { IGridHighlightsProp } from '~/interfaces/components/grid/IGridHighlight
 export default class Home extends Vue {
   last = {} as IData
   update = {} as IDataUpdate
+  highlights = {} as IGridHighlightsProp
   data = ''
   recuperados = 0
   confirmados = 0
   obitos = 0
   nationalRt = '0'
   nationalRtData = ''
-  highlights = {} as IGridHighlightsProp
 
   get lastUpdateCleanData() {
     const lastUpdateCopy: any = this.last

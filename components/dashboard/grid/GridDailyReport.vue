@@ -48,7 +48,7 @@
 import { Component, Prop, Vue } from 'nuxt-property-decorator'
 
 @Component
-export default class GridReport extends Vue {
+export default class GridDailyReport extends Vue {
   @Prop({ required: true }) vigilancia!: number
   @Prop({ required: true }) activos!: number
   @Prop({ required: true }) internadosUci!: number
@@ -63,7 +63,7 @@ export default class GridReport extends Vue {
 <style lang="scss" scoped>
 .nc-grid-report {
   &__header {
-    @apply text-xl text-gray-600 mb-6;
+    @apply text-lg text-gray-600 mb-4;
   }
 
   &__row {
@@ -77,7 +77,7 @@ export default class GridReport extends Vue {
 
 .nc-grid-report-column {
   &__value {
-    @apply font-semibold text-lg;
+    @apply font-semibold text-lg text-gray-600;
   }
 
   &__label {
