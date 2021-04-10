@@ -11,15 +11,27 @@
       Código fonte aberto e disponível em
       <a
         class="nc-link"
+        rel="noreferrer noopener"
         target="blank"
         href="https://github.com/AndreVarandas/numeroscovid19"
         >Github.com</a
       >.
     </p>
     <p class="nc-footer__line">
+      REST api disponível em
+      <a
+        class="nc-link"
+        rel="noreferrer noopener"
+        href="https://api.numeroscovid19.pt/api/v1"
+        target="blank"
+        >https://api.numeroscovid19.pt/api/v1</a
+      >
+    </p>
+    <p class="nc-footer__line">
       Dados fornecidos por
       <a
         class="nc-link"
+        rel="noreferrer noopener"
         target="blank"
         href="https://github.com/dssg-pt/covid19pt-data"
         >DSSG-PT Covid19pt-data Github</a
@@ -33,11 +45,11 @@
   @apply px-6 py-4 leading-loose;
 
   &__header {
-    @apply text-gray-600;
+    @apply text-gray-700;
   }
 
   &__line {
-    @apply text-sm text-gray-400 leading-loose;
+    @apply text-sm text-gray-500 leading-loose;
   }
 }
 </style>

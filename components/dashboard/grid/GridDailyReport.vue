@@ -63,7 +63,7 @@ export default class GridDailyReport extends Vue {
 <style lang="scss" scoped>
 .nc-grid-report {
   &__header {
-    @apply text-lg text-gray-600 mb-4;
+    @apply font-semibold text-lg text-gray-700 bg-green-300 px-4 py-2 mb-4 rounded inline-block;
   }
 
   &__row {
@@ -77,11 +77,11 @@ export default class GridDailyReport extends Vue {
 
 .nc-grid-report-column {
   &__value {
-    @apply font-semibold text-lg text-gray-600;
+    @apply font-semibold text-lg text-gray-700;
   }
 
   &__label {
-    @apply text-sm text-gray-400 mt-2;
+    @apply text-sm text-gray-500 mt-2;
   }
 }
 </style>

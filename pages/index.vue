@@ -1,11 +1,11 @@
 <template>
   <div class="nc-container">
     <section>
-      <h1 class="text-3xl font-bold text-gray-600 mb-2">
+      <h1 class="text-3xl font-bold text-gray-700 mb-2">
         Números covid-19 Portugal
       </h1>
-      <h2 class="text-xl text-gray-600 mb-6">Últimos dados disponíveis</h2>
-      <div class="flex flex-col md:flex-row items-center">
+      <h2 class="text-xl text-gray-700 mb-6">Últimos dados disponíveis</h2>
+      <div class="flex flex-col md:flex-row items-baseline">
         <CardDailyUpdate
           class="sm:w-1/2"
           subtitle="Resumo do relatório"
@@ -32,18 +32,23 @@
     <section class="flex flex-col mt-6 md:flex-row md:mt-12">
       <CardReproductionUpdate
         class="md:w-1/3"
-        :reproduction="nationalRt"
+        :national-r="nationalRt"
+        :continental-r="continentalRt"
         :data="nationalRtData"
       />
 
-      <div class="mt-12 sm:ml-12 md:mt-0">
+      <div class="mt-12 md:ml-12 md:mt-0">
         <GridHighlights :highlights="highlights" />
       </div>
     </section>
 
     <section>
       <div class="flex flex-col mt-12">
-        <h2 class="text-xl text-gray-600 mb-2">Todos os dados disponíveis</h2>
+        <h2
+          class="text-xl text-gray-700 mb-2 bg-green-300 font-semibold px-4 py-2"
+        >
+          Todos os dados disponíveis
+        </h2>
         <GridCompleteReport :data="lastUpdateCleanData" />
       </div>
     </section>
@@ -86,6 +91,7 @@ export default class Home extends Vue {
   obitos = 0
   nationalRt = '0'
   nationalRtData = ''
+  continentalRt = ''
 
   get lastUpdateCleanData() {
     const lastUpdateCopy: any = this.last
@@ -120,6 +126,7 @@ export default class Home extends Vue {
       await this.fetchLatestRtData(5)
     } else {
       this.nationalRt = this.last.rtNacional
+      this.continentalRt = this.last.rtContinente
       this.nationalRtData = this.last.data
     }
   }
@@ -138,8 +145,9 @@ export default class Home extends Vue {
   async fetchLatestRtData(retries: number) {
     for (let i = 1; i < retries + 1; i++) {
       const data: IData[] = await $axios.get(`api/v1/data/last/${i}`)
-      if (data[0].rtNacional) {
+      if (data[0].rtNacional && data[0].rtContinente) {
         this.nationalRt = data[0].rtNacional
+        this.continentalRt = data[0].rtContinente
         this.nationalRtData = data[0].data
         break
       }

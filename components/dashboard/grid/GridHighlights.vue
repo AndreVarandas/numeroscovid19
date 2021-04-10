@@ -57,7 +57,7 @@ export default class GridTopData extends Vue {
 <style lang="scss" scoped>
 .nc-grid-highlights {
   &__title {
-    @apply text-lg text-gray-600 mb-4;
+    @apply font-semibold text-lg text-gray-700 bg-green-300 rounded py-2 px-4 inline-block mb-4;
   }
 
   &__content {
@@ -67,11 +67,11 @@ export default class GridTopData extends Vue {
 
 .nc-grid-highlights-col {
   &__value {
-    @apply text-gray-600 font-bold;
+    @apply text-gray-700 font-bold;
   }
 
   &__label {
-    @apply text-gray-400 text-sm mt-2;
+    @apply text-gray-500 text-sm mt-2;
   }
 }
 </style>

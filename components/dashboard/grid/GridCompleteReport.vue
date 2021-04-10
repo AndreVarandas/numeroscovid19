@@ -7,7 +7,7 @@
         :class="{ 'bg-gray-200': index % 2 === 1 }"
       >
         <td class="px-4 py-2 text-gray-500">{{ convertKey(index) }}</td>
-        <td class="px-4 py-2 text-gray-600">{{ data[key] }}</td>
+        <td class="px-4 py-2 text-gray-700">{{ data[key] }}</td>
       </tr>
     </tbody>
   </table>

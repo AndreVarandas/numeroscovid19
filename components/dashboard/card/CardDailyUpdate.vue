@@ -1,21 +1,21 @@
 <template>
   <article class="nc-card">
     <div class="nc-card__header">
-      <h2 class="font-semibold text-gray-600 text-2xl mb-1">{{ title }}</h2>
-      <p class="text-gray-400">{{ subtitle }}</p>
+      <h2 class="font-semibold text-gray-700 text-2xl mb-1">{{ title }}</h2>
+      <p class="text-gray-500">{{ subtitle }}</p>
     </div>
     <div class="nc-card-info nc-card__info">
       <div class="nc-card-info__values border-red-300">
         <span>{{ obitos }}</span>
-        <p class="text-sm text-gray-400 font-normal">Óbitos</p>
+        <p class="text-sm text-gray-500 font-normal">Óbitos</p>
       </div>
       <div class="nc-card-info__values border-yellow-300">
         <span>{{ novos }}</span>
-        <p class="text-sm text-gray-400 font-normal">Casos Novos</p>
+        <p class="text-sm text-gray-500 font-normal">Casos Novos</p>
       </div>
       <div class="nc-card-info__values border-green-300">
         <span>{{ recuperados }}</span>
-        <p class="text-sm text-gray-400 font-normal">Recuperados</p>
+        <p class="text-sm text-gray-500 font-normal">Recuperados</p>
       </div>
     </div>
   </article>
@@ -48,7 +48,7 @@ export default class CardDailyUpdate extends Vue {
   @apply flex justify-around mt-6;
 
   &__values {
-    @apply flex flex-col flex-1 items-center border-t-4 py-2 font-bold text-gray-600 text-xl;
+    @apply flex flex-col flex-1 items-center border-t-4 py-2 font-bold text-gray-700 text-xl;
   }
 
   &__values:not(:first-child) {
