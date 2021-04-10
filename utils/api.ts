@@ -23,7 +23,7 @@ export function initializeAxios(axiosInstance: NuxtAxiosInstance) {
     throttleConfig
   )
 
-  $axios.setBaseURL('https://covid-19-data.azurewebsites.net/')
+  $axios.setBaseURL('https://api.numeroscovid19.pt')
 
   $axios.interceptors.response.use(
     function (response) {
