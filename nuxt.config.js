@@ -45,6 +45,10 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/pwa
     '@nuxtjs/pwa',
+    // https://github.com/nuxt-community/analytics-module#readme
+    '@nuxtjs/google-analytics',
+    // https://github.com/nuxt-community/sitemap-module (always declare the sitemap module at end of array)
+    '@nuxtjs/sitemap',
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -59,4 +63,10 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
+
+  googleAnalytics: require('./config/googleAnalytics.js'),
+
+  sitemap: {
+    hostname: 'https://numeroscovid19.pt',
+  },
 }
