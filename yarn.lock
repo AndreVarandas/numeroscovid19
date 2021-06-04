@@ -2403,10 +2403,10 @@
   optionalDependencies:
     prettier "^1.18.2"
 
-"@vue/test-utils@^1.1.4":
-  version "1.1.4"
-  resolved "https://registry.yarnpkg.com/@vue/test-utils/-/test-utils-1.1.4.tgz#a9acb32ea1fa4535b2e1ce5ca100bceb4fade2db"
-  integrity sha512-9BeL8IqGvJKy553lq/07rhYURQkpS/k+j19rJ/4eDpGJk7z872M0YrBWFhjS14yMKlvYVYOCfWnVIXyrAx0xNw==
+"@vue/test-utils@^1.2.0":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@vue/test-utils/-/test-utils-1.2.0.tgz#3bc8c17ed549157275f0aec6b95da40887f7297f"
+  integrity sha512-poBTLqeJYNq1TXVhtVfnY8vELUVOFdJY8KZZoUuaAkIqPTWsxonU1M8nMWpZT+xEMrM+49+YcuEqtMHVD9Q9gw==
   dependencies:
     dom-event-types "^1.0.0"
     lodash "^4.17.15"
@@ -11231,10 +11231,10 @@ sass-loader@^12.0.0:
     klona "^2.0.4"
     neo-async "^2.6.2"
 
-sass@^1.32.12:
-  version "1.32.12"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.32.12.tgz#a2a47ad0f1c168222db5206444a30c12457abb9f"
-  integrity sha512-zmXn03k3hN0KaiVTjohgkg98C3UowhL1/VSGdj4/VAAiMKGQOE80PFPxFP2Kyq0OUskPKcY5lImkhBKEHlypJA==
+sass@^1.34.1:
+  version "1.34.1"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.34.1.tgz#30f45c606c483d47b634f1e7371e13ff773c96ef"
+  integrity sha512-scLA7EIZM+MmYlej6sdVr0HRbZX5caX5ofDT9asWnUJj21oqgsC+1LuNfm0eg+vM0fCTZHhwImTiCU0sx9h9CQ==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
 
