@@ -29,7 +29,7 @@ jobs:
         npm run build
 
     - name: Run Azure webapp deploy action using publish profile credentials
-      uses: azure/webapps-deploy@v2.2.0
+      uses: azure/webapps-deploy@v2.2.1
       with:
         app-name: numeroscovid19
         slot-name: Production
