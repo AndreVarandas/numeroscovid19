@@ -55,7 +55,7 @@
     "husky": "^6.0.0",
     "jest": "^26.6.3",
     "lint-staged": "^11.0.0",
-    "nuxt-start": "^2.15.6",
+    "nuxt-start": "^2.15.7",
     "postcss": "^8.3.5",
     "prettier": "^2.2.1",
     "sass": "^1.35.1",
