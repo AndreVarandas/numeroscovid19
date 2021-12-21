@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 <template>
   <div class="nc-container">
     <section>
@@ -46,14 +45,7 @@
     <section>
       <div class="flex flex-col mt-12">
         <h2
-          class="
-            text-xl text-gray-700
-            mb-2
-            bg-green-300
-            font-semibold
-            px-4
-            py-2
-          "
+          class="text-xl text-gray-700 mb-2 bg-green-300 font-semibold px-4 py-2"
         >
           Todos os dados disponíveis
         </h2>
