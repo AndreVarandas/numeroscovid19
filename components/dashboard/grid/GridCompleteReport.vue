@@ -34,7 +34,6 @@ export default class GridCompleteReport extends Vue {
    * from camelCase to Sentence Case.
    */
   get convertedKeys() {
-    console.log('Trying to convert data, ', this.data)
     const keys = Object.keys(this.data)
     const results: string[] = []
     keys.forEach((key) => {
