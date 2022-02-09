@@ -37,6 +37,7 @@ export default class CardDailyUpdate extends Vue {
 <style lang="scss" scoped>
 .nc-card {
   min-width: 350px;
+
   @apply bg-white px-8 py-6 border-b-4 rounded-2xl shadow-lg;
 
   &__header {

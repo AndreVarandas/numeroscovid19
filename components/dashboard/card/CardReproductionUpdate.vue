@@ -43,6 +43,7 @@ export default class CardReproductionUpate extends Vue {
 <style lang="scss" scoped>
 .nc-card-rupdate {
   min-width: 350px;
+
   @apply flex flex-col bg-white px-6 py-4 rounded;
 
   &__title {
