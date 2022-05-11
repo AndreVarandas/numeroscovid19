@@ -1,5 +1,7 @@
 # numeroscovid19
 
+**Archived because the data is no longer provided in a daily report**
+
 Frontend that uses [https://github.com/AndreVarandas/portugal-covid-19-api](https://github.com/AndreVarandas/portugal-covid-19-api) api to show covid-19 numbers in Portugal, in a simple **uninspired** dashboard.
 
 No charts. Just numbers.
